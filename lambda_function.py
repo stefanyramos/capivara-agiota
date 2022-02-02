@@ -77,5 +77,3 @@ for post in posts_hoje:
           f'Revisão: {revisao}' 
 
     bot.send_message(text=msg, chat_id=-1001451877609)
-
-
