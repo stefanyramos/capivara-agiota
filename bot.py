@@ -1,17 +1,45 @@
+from turtle import pos
 import telegram
 import config
-from config import membros
 from func import *
 
 bot = telegram.Bot(token=config.telegram_token)
 
-database_posts_id = "19970d82fb4b40de8380949481656708"
-database_grupos_id = "09d84fdfe9744f4cbd25d00ea9cc4145"
-nome_coluna_prazo = "Data da Postagem"
+# ids dos databbases usados
+database_posts_id = "TAREFAS_DATABASE_ID"
+database_grupos_id = "GRUPO_DATABASE_ID" # caso vc use uma tabela separada com grupos de pessoas responsáveis
 
-posts = get_tarefas_hoje(database_posts_id, nome_coluna_prazo)
+# nome das colunas do seu ddatabase
+nome_coluna_tarefa = "Tarefa"
+nome_coluna_prazo = "Data"
+nome_coluna_responsaveis = "Responsáveis"
 
-for tarefa in posts:
+# pega todas as tarefas com prazo de hoje
+tarefas = get_tarefas_hoje(database_posts_id, nome_coluna_prazo)
+print(f'***TAREFAS*** \n{tarefas}\n')
+
+
+# Exemplo caso não tenha uma tabela com grupos separada mas vc coloca o nome das pessoas direto na tabela de tarefas
+for tarefa in tarefas:
+    descricao = get_valor_coluna(tarefa, nome_coluna=nome_coluna_tarefa)
+    responsaveis = get_responsaveis(tarefa, nome_coluna_responsaveis)
+    resp = formata_responsaveis(responsaveis)
+
+    msg = f'*Tarefas de Hoje* 👀 \n\n' \
+          f'*Descrição*: {descricao} \n\n' \
+          f'{resp} \n' \
+          f''
+
+    print(f'***]Mensagem*** \n{msg}\n')
+    bot.send_message(text=msg, parse_mode='MarkdownV2', chat_id=config.chat_id)
+
+
+"""
+SE VOCÊ NAO TIVER UMA RELAÇÃO NA TABELA PODE DELETAR ESSA PARTE
+Exemplo caso você use uma tabela separada para criar grupos e vc chama essa tabela de 
+grupos na sua tabela de tarefas gerando uma relação
+"""
+for tarefa in tarefas:
     descricao = get_valor_coluna(tarefa, 'Descrição')
     grupo_resp = get_responsaveis(tarefa=tarefa, database_relacao_id=database_grupos_id, nome_coluna_responsaveis='Related to posts + stories (Responsável)')
     resp = formata_responsaveis(grupo_resp, col_nome_grupo='Name')
@@ -21,19 +49,5 @@ for tarefa in posts:
           f'{resp} \n' \
           f''
 
-    bot.send_message(text=msg, parse_mode='MarkdownV2', chat_id=config.chat_id)
-
-
-""" Exemplo caso não tenha uma tabela com grupos separada mas vc coloca o nome das pessoas direto na tabela de tarefas
-for tarefa in posts:
-    descricao = get_valor_coluna(tarefa, 'Descrição')
-    grupo_resp = get_responsaveis(tarefa=tarefa, nome_coluna_responsaveis='Pessoa responsavel')
-    resp = formata_responsaveis(grupo_resp)
-
-    msg = f'*Posts de Hoje* 👀 \n\n' \
-          f'*Descrição*: {descricao} \n\n' \
-          f'{resp} \n' \
-          f''
-
-    bot.send_message(text=msg, parse_mode='MarkdownV2', chat_id=config.chat_id)
-"""
+    print(f'***]Mensagem*** \n{msg}\n')
+    # bot.send_message(text=msg, parse_mode='MarkdownV2', chat_id=config.chat_id)
