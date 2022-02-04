@@ -8,7 +8,6 @@ from config import membros
 notion = Client(auth=config.notion_token)
 
 
-
 def get_tarefas_hoje(datadabe_id, nome_coluna_prazo):
     """ Relazia uma busca no database do notion (database_tarefas_id) e 
     Retorna um dict todas as linhas do database que tem prazo (nome_coluna_prazo) para hoje
@@ -86,13 +85,6 @@ def get_valor_coluna(linha, nome_coluna):
 
     if tipo_coluna == 'relation':
         return linha.get('relation')[0].get('id')
-
-    """
-    if tipo_coluna == 'people':
-        if len(linha.get('people')) > 0:
-            return linha.get('people')[0].get('name')
-        return ''
-    """
     
     if tipo_coluna == 'people':
         pessoas = linha.get('people')
@@ -103,7 +95,6 @@ def get_valor_coluna(linha, nome_coluna):
             return nomes
         return ['']
         
-
 
 def formata_responsaveis(grupo_resp, col_nome_grupo=''):
     """
