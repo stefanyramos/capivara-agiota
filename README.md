@@ -10,7 +10,9 @@ Recebe dados do notion para mandar as mensagens no telegram com as informações
 1. Crie um bot no telegram (tutorial [aqui](https://sendpulse.com/knowledge-base/chatbot/create-telegram-chatbot)) 
 2. Copie o token de acesso do seu bot
 3. Substitua `telegram_token` em [config.py](https://github.com/stefanyramos/capivara-agiota/blob/main/config.py#L2) pelo token que você acabou de copiar:
-    ```python
+   
+   
+   ```python
     notion_token = "YOUR_NOTION_TOKEN"
     telegram_token = "YOUR_TELEGRAM_TOKEN"
     chat_id = "TELEGRAM_CHAT_ID"
