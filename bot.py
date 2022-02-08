@@ -6,7 +6,7 @@ from func import *
 bot = telegram.Bot(token=config.telegram_token)
 
 # ids dos databbases usados
-database_posts_id = "TAREFAS_DATABASE_ID"
+database_tarefas_id = "TAREFAS_DATABASE_ID"
 database_grupos_id = "GRUPO_DATABASE_ID" # caso vc use uma tabela separada com grupos de pessoas responsáveis
 
 # nome das colunas do seu ddatabase
@@ -15,7 +15,7 @@ nome_coluna_prazo = "Data"
 nome_coluna_responsaveis = "Responsáveis"
 
 # pega todas as tarefas com prazo de hoje
-tarefas = get_tarefas_hoje(database_posts_id, nome_coluna_prazo)
+tarefas = get_tarefas_hoje(database_tarefas_id, nome_coluna_prazo)
 print(f'***TAREFAS*** \n{tarefas}\n')
 
 
