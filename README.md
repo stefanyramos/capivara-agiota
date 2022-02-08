@@ -77,7 +77,7 @@ Toda vez que você rodar o código a capivara-agiota vai pegar as tarefas do dia
 10. Agora você pode substituir o `token_notion` no [config.py](https://github.com/stefanyramos/capivara-agiota/blob/main/config.py#L1) pelo token do notion que você copiou
 
 
-### Conect o database do seu notion
+### Conecte o database do seu notion com o bot
 1. na página de seu database selecione o id do seu database. Ele fica na url dessa forma:
 
 https://www.notion.so/<long_hash_1>?v=<long_hash_2>
@@ -85,10 +85,10 @@ https://www.notion.so/<long_hash_1>?v=<long_hash_2>
 <long_hash_1> é o id do database. Copi ele
 
 2. Em [bot.py](https://github.com/stefanyramos/capivara-agiota/blob/main/bot.py#L8-L15), substitua:
-- `database_tarefas_id `  pelo id do database que você acaboou de copiar
-- `nome_coluna_tarefa` nome da coluna no seu database com o nome que descreve sua tarefa
-- `nome_coluna_prazo `  nome da coluna no seu database com o prazo da tarefa (lembre de colocar o tipo da coluna como o de data mesmo, se for somente texto, o bot quebra)
-- `nome_coluna_responsaveis` nome da coluna no seu database com os responsáveis pela tarefa (preferencialmente do tipo pessoa, não testei com outros tipos pra saber se funciona)
+- `database_tarefas_id ` pelo id do database que você acaboou de copiar
+- `nome_coluna_tarefa` pelo nome da coluna no seu database com o nome que descreve sua tarefa
+- `nome_coluna_prazo ` pelo nome da coluna no seu database com o prazo da tarefa (lembre de colocar o tipo da coluna como o de data mesmo, se for somente texto, o bot quebra)
+- `nome_coluna_responsaveis` pelo nome da coluna no seu database com os responsáveis pela tarefa (preferencialmente do tipo pessoa, não testei com outros tipos pra saber se funciona)
 
 ```
 # ids dos databbases usados
@@ -115,7 +115,9 @@ membros = {
 }
 ```
 
-Acho que é isso :)
+## Deploy 
+
+Agora, você precisa rodar seu programa uma vez por dia para que a capivara-agiota envie as mensagens no telegram cobrando as pessoas. Para isso, eu usei uma máquina EC2 na aws no teste grátis e usei um crontab para rodar o programa todo dia às 12h30. Passo a passo disso em breve 
 
 
 
