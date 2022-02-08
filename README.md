@@ -17,7 +17,7 @@ Toda vez que você rodar o código a capivara-agiota vai pegar as tarefas do dia
 
  
 # Como eu uso a capivara-agiota?
-### Configure seu bot no telegram
+## Configure seu bot no telegram
 1. Crie um bot no telegram (tutorial [aqui](https://sendpulse.com/knowledge-base/chatbot/create-telegram-chatbot)) 
 2. Copie o token de acesso do seu bot
 3. Substitua `telegram_token` em [config.py](https://github.com/stefanyramos/capivara-agiota/blob/main/config.py#L2) pelo token que você acabou de copiar:
@@ -33,7 +33,7 @@ Toda vez que você rodar o código a capivara-agiota vai pegar as tarefas do dia
 6. Procure por chat_id. Copie ele
 7. Substitua `chat_id` em [config.py](https://github.com/stefanyramos/capivara-agiota/blob/main/config.py#L2) pelo chat_id que você acabou de copiar
     
-### Configure seu notion
+## Configure seu notion
 1. Crie um notion: https://www.notion.so
 - não se esqueça de selecionar **o teste gratuito do plano de time**
 
@@ -57,7 +57,7 @@ Toda vez que você rodar o código a capivara-agiota vai pegar as tarefas do dia
 ![image](https://user-images.githubusercontent.com/40060993/152912957-fca27c3d-52dd-43c4-be03-a8860ce028bc.png)
 
 
-### Crie um token de acesso no Notion
+## Crie um token de acesso no Notion
 
 1. CLique em **Settings & Members**
 2. Clique em **Integration**
@@ -77,7 +77,7 @@ Toda vez que você rodar o código a capivara-agiota vai pegar as tarefas do dia
 10. Agora você pode substituir o `token_notion` no [config.py](https://github.com/stefanyramos/capivara-agiota/blob/main/config.py#L1) pelo token do notion que você copiou
 
 
-### Conecte o database do seu notion com o bot
+## Conecte o database do seu notion com o bot
 1. na página de seu database selecione o id do seu database. Ele fica na url dessa forma:
 
 https://www.notion.so/<long_hash_1>?v=<long_hash_2>
@@ -103,7 +103,7 @@ nome_coluna_responsaveis = "Responsáveis"
 - Ignore o `database_grupos_id` por enquanto
 
 
-### Como a capivara agiota marca as pessoas no telegram?
+## Como a capivara agiota marca as pessoas no telegram?
 
 1. Vá em [config.py](https://github.com/stefanyramos/capivara-agiota/blob/main/config.py#L5-L9) e coloque o nome dos membros no notion e seus respectivos usuários no telegram.
 
